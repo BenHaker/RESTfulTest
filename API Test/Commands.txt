@@ -1,0 +1,36 @@
+MongoDB Folder
+-------------------------------------------------------------------------
+D:\MongoDB\Server\3.4\bin
+
+Start MongoDB from the mongoDB directory (e.g. D:\MongoDB\Server\3.4\bin)
+-------------------------------------------------------------------------
+mongod --dbpath d:\mongodata\data
+* d:\mongodata\data -> your data folder
+
+MongoDB commandline
+-------------------------------------------------------------------------
+* mongo -> start commandline
+* show dbs -> show all dbs
+* use DBNAME -> connect to a DB. DBNAME = your db name
+* show collections
+* db.COLLECTIONAME.OPERATION -> all operations on a collection
+* db.COLLECTIONAME.find() -> show all documents.
+* db.COLLECTIONAME.deleteMany({}) -> delete all documents.
+
+Java Folder
+-------------------------------------------------------------------------
+E:\Projects\RESTfulTest\RESTfulTestAPI
+
+Build the Java code from project root
+-------------------------------------------------------------------------
+Gradle Build
+
+Run the Java code from project root
+-------------------------------------------------------------------------
+java -jar build/libs/gs-rest-service-0.1.0.jar
+
+* gs-rest-service-0.1.0.jar -> your JAR
+
+ReactJS Folder - web
+-------------------------------------------------------------------------
+E:\Projects\RESTfulTest\RESTfulTestUI\restfultest-ui-web

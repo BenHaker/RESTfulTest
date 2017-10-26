@@ -9,9 +9,9 @@ export function PersonDetails(props) {
     return (
         <View>
             <View>
-                <TextInput placeholder="Insert First Name" ref={input => { firstName = input; }} value={ props.firstName }/>
-                <TextInput placeholder="Insert Last Name" ref={input => { lastName = input; }} value={ props.lastName }/>
-                <Button onPress={ () => { props.onClick(firstName.value, lastName.value, props.personId, props.index, props.history) }} title={ props.buttonText }/>
+                <TextInput placeholder="Insert First Name" ref={input => { firstName = input; }} defaultValue={ props.firstName }/>
+                <TextInput placeholder="Insert Last Name" ref={input => { lastName = input; }} defaultValue={ props.lastName }/>
+                <Button onPress={ () => { props.onClick(firstName._lastNativeText, lastName._lastNativeText, props.personId, props.index, props.history) }} title={ props.buttonText }/>
                 { props.onCancel && <Button onPress={ () => { props.onCancel(props.history) }} title="Cancel"/> }
             </View>
             { props.loading && <Text>Loading, please wait</Text> }

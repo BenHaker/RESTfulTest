@@ -27,12 +27,13 @@ function mapState(state) {
 function mapDispatch(dispatch) {
     return {
         createRandomPerson: (textInput) => { 
-            if(textInput.value == null || textInput.value === "")
+            let value = textInput._lastNativeText;
+            if(value == null || value === "")
             {
                 dispatch(createRandomPersonErrorAction("Please Insert a Valid Value"));;
                 return;
             }
-            dispatch(createRandomPersonAction(textInput.value))
+            dispatch(createRandomPersonAction(value))
         },
     }
 }

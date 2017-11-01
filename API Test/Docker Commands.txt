@@ -1,0 +1,51 @@
+NodeJS Image
+----------------------------------------------------------------
+docker build -f Dockerfile -t rest-client-web/node .
+
+* run from projects source (where Dockerfile is) -> E:\Projects\RESTfulTest\RESTfulTestUI\restfultest-ui-web
+
+docker run -d -p 8080:3000 rest-client-web/node 
+
+* run the docker image as a container
+
+docker run -d -p 8080:3000 -v E:\Projects\RESTfulTest\RESTfulTestUI\restfultest-ui-web:/source -w "/source" node npm start
+
+* run the docker (node image) with code volume
+
+Java REST API Image
+----------------------------------------------------------------
+docker build -f Dockerfile -t rest-server-api/openjdk .
+
+* run from projects source (where Dockerfile is) -> E:\Projects\RESTfulTest\RESTfulTestAPI
+
+docker run -d -p 8090:8090 rest-server-api/openjdk
+
+* run the docker image as a container
+
+docker run -d -p 8090:8090 -v E:\Projects\RESTfulTest\RESTfulTestAPI:/source -w "/source" openjdk java -jar build/libs/gs-rest-service-0.1.0.jar --server.port=8090
+
+* run the docker with code volume
+
+MongoDB Image
+----------------------------------------------------------------
+docker run -d -p 27017:27017 mongo
+
+* run the docker image as a container
+
+docker run -d -p 27017:27017 mongo
+
+* run the docker with data volume
+
+
+Connecting the MongoDB and the Java REST API
+----------------------------------------------------------------
+docker run -d --name my-mongo -p 27017:27017 mongo
+docker run -d -p 8090:8090 --link my-mongo:mongodb -v E:\Projects\RESTfulTest\RESTfulTestAPI:/source -w "/source" openjdk java -jar build/libs/gs-rest-service-0.1.0.jar --server.port=8090
+
+* Connect by Name
+
+docker network create --driver bridge rest_network
+docker run -d --net rest_network --name mongodb -p 27017:27017 mongo
+docker run -d --net rest_network -p 8090:8090 -v E:\Projects\RESTfulTest\RESTfulTestAPI:/source -w "/source" openjdk java -jar build/libs/gs-rest-service-0.1.0.jar --server.port=8090
+
+* Connect by Network

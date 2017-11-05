@@ -1,0 +1,29 @@
+version: '2'
+
+services: 
+  mongodb:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    networks: 
+      - rest_network
+  rest:
+    build:
+      context: .\RESTfulTestAPI
+      dockerfile: Dockerfile
+    ports: 
+      - "8090:8090"
+    networks: 
+      - rest_network
+  web:
+    build:
+      context: .\RESTfulTestUI\restfultest-ui-web
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+    networks: 
+      - rest_network
+
+networks:
+  rest_network:
+    driver: bridge

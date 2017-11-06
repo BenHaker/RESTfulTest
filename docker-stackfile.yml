@@ -1,0 +1,14 @@
+mongodb:
+  image: mongo
+  ports: 
+    - '27017:27017'
+rest-server:
+  image: 'benhaker/rest-test-server:latest'
+  ports: 
+    - "8090:8090"
+  links: 
+    - mongodb
+rest-web:
+  image: 'benhaker/rest-test-web:latest'
+  ports: 
+    - '3000:3000'
